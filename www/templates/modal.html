@@ -1,0 +1,72 @@
+   <ion-modal-view>
+        <ion-header-bar class="bar bar-header bar-positive">
+          <h1 class="title">Legg til</h1>
+          <button class="button button-clear button-primary" ng-click="modal.hide()">Cancel</button>
+        </ion-header-bar>
+        <ion-content class="padding">
+           <form>
+            <label class="item item-input">
+                <i class="icon ion-record placeholder-icon"></i>
+                <input type="text" ng-model="product.make" placeholder="Merke">
+              </label>
+              <label class="item item-input">
+                <i class="icon ion-record placeholder-icon"></i>
+                <input type="text" ng-model="product.model" placeholder="Modell">
+              </label>
+              <label class="item item-input item-select">
+                <div class="input-label">
+                  Type
+                </div>
+                <select ng-model="product.type">
+                  <option value="Telefon" selected>Telefon</option>
+                  <option value="Tablet">Tablet</option>
+                  <option value="Wearable">Wearable</option>
+                  <option value="Annet">Annet</option>
+                </select>
+              </label>
+              <label class="item item-input item-select">
+                <div class="input-label">
+                  Operativsystem
+                </div>
+                <select ng-model="product.os">
+                  <option value="Android" selected>Android</option>
+                  <option value="iOS">iOS</option>
+                  <option value="Windows">Windows</option>
+                  <option value="Annet">Annet</option>
+                </select>
+              </label>
+               <label>Tilbehør</label>
+               <ul class="list">
+                  <li class="item item-checkbox">
+                     <label class="checkbox">
+                       <input type="checkbox" ng-model="product.acc.Boks" value="Boks">
+                     </label>
+                     Boks
+                  </li>
+                  <li class="item item-checkbox">
+                     <label class="checkbox">
+                       <input type="checkbox" ng-model="product.acc.Earphones" value="Øretelefoner">
+                     </label>
+                     Høretelefoner
+                  </li>
+                  <li class="item item-checkbox">
+                     <label class="checkbox">
+                       <input type="checkbox" ng-model="product.acc.Ladekabel" value="Ladekabel">
+                     </label>
+                     Ladekabel
+                  </li>
+                  <li class="item item-checkbox">
+                     <label class="checkbox">
+                       <input type="checkbox" ng-model="product.acc.USB" value="Boks">
+                     </label>
+                     USB-adapter
+                  </li>
+                   
+                </ul>
+            </div>
+            <button class="button button-block button-positive" ng-click="add(product)">
+                Legg til
+            </button>
+        </form>  
+        </ion-content>
+      </ion-modal-view>

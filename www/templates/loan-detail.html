@@ -1,0 +1,93 @@
+<ion-view view-title="{{activeItem.model}}" ng-cloak>
+    <ion-nav-buttons side="right">
+      <button class="button button-clear" ng-click="edit()" ng-show="showEdit">
+         <i class="ion-edit"></i>
+      </button>
+    </ion-nav-buttons>
+    <ion-content class="padding-top padding">
+        <div class="list">
+          <div class="item item-button-right">
+                Denne er: <b>{{availability(activeItem)}}</b><span ng-show="!activeItem.available">
+                  til {{ returnLoanee(activeItem) }}<br>                    
+              </span>
+              <button class="button button-balanced" style="float: right" ng-show="!activeItem.available"> <a class="a-style" href="tel://{{returnPhone}}">Ring</a></button>
+          </div>
+            <div class="item item-body" ng-show="!activeItem.available">Utlånt i {{ dateDiff(today, activeItem) }} dager</div>
+          <div class="item item-body">
+            <h2><strong>Detaljer</strong></h2>
+              <div class="list">
+                  <a class="item">
+                    Merke
+                    <span class="item-note black-color" ng-show="editActive">
+                      {{activeItem.make}}
+                    </span>
+                    <span class="item-note black-color" ng-show="!editActive">
+                        <input type="text" class="my-input" ng-model="activeItem.make" />
+                    </span>
+                  </a>
+                  <a class="item" href="#">
+                    Modell
+                    <span class="item-note black-color" ng-show="editActive">
+                      {{activeItem.model}}
+                    </span>
+                    <span class="item-note black-color" ng-show="!editActive">
+                        <input type="text" class="my-input" ng-model="activeItem.model" />
+                    </span>
+                  </a>
+                  <a class="item" href="#">
+                    Operativsystem
+                    <span class="item-note black-color" ng-show="editActive">
+                      {{activeItem.os}}
+                    </span>
+                    <span class="item-note black-color" ng-show="!editActive">
+                        <input type="text" class="my-input" ng-model="activeItem.os" />
+                    </span>
+                  </a>
+                  <a class="item" href="#">
+                    Type
+                    <span class="item-note black-color" ng-show="editActive">
+                      {{activeItem.type}}
+                    </span>
+                    <span class="item-note black-color" ng-show="!editActive">
+                        <input type="text" class="my-input" ng-model="activeItem.type" />
+                    </span>
+                  </a>
+              </div>
+                <button class="button button-block button-positive" ng-show="!editActive" ng-click="saveChanges()">
+                Lagre endringer
+              </button>
+        </div>
+        <div class="item item-body">
+            <h2><strong>Tilbehør</strong></h2>
+              <div class="list">
+                  <a class="item" ng-repeat="(key, val) in activeItem.acc">
+                    {{ key }}
+                  </a>
+              </div>
+        </div>
+        </div>
+          <div class="list">
+              <div class="item">
+                <h2><strong>Tidligere utlån</strong></h2>
+              </div>
+              <div class="item item-button-right" ng-repeat="loan in activeItem.previousLoans">
+                <div ng-show="loan.name !== 'nothing'">
+                      {{ loan.name }}
+                  </div>
+              </div>
+              <div class="item" ng-show="activeItem.previousLoans.length === 1">Ingen registrerte lån enda</div>
+        </div>
+        <div class="spacer"></div>
+    </ion-content>
+
+<ion-footer-bar class="bar bar-balanced" ng-show="activeItem.available">
+	<div class="button-bar"  ng-click="openModal()" >
+		<a class="button button-clear button-balanced white-text">Start utlån</a>
+	</div>
+</ion-footer-bar>
+    <ion-footer-bar class="bar bar-assertive" ng-show="!activeItem.available">
+	<div class="button-bar"  ng-click="return(activeItem)" >
+		<a class="button button-clear white-text button-assertive">Returner</a>
+	</div>
+</ion-footer-bar>
+</ion-view>

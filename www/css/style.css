@@ -1,0 +1,79 @@
+/* Empty. Add your own CSS if you like */
+
+.background-color {
+    background: #3498db;
+}
+
+.header {
+    color: #fff;
+}
+
+.my-icon {
+    font-size: 2.4em;
+}
+
+.padding-top {
+    padding-top: 1em;
+}
+
+.vertical-center {
+    position: absolute;
+    top: 50%;
+    transform: translate(0,-50%);
+    -webkit-transform: translate(0,-50%);
+    -ms-transform: translate(0,-50%);
+}
+
+.bar-subheader2 {
+    top: 44px;
+    display: block;
+    height: 88px; 
+
+}
+
+.black-color {
+    color: #000;
+    height: 1.2em;
+}
+
+.white-text {
+    color: #fff !important;
+}
+
+.a-style {
+    color: #fff;
+    text-decoration: none;
+}
+
+.my-input {
+    text-align: right;
+    height: .1em;
+    padding-bottom: 1.1em;
+    padding-right: -.2em;
+}
+
+.spacer {
+    height: 2em;
+}
+
+.floatr {
+    float: right;
+    margin-top: -2.5em;
+}
+
+.align-rightz {
+    position: absolute;
+    right: 10px;
+    top: 0.5em;
+    padding: 1em;
+    border-radius: 50em;
+}
+
+.red {
+    background-color: red;
+    color: #fff;
+}
+
+.custom-bar {
+    margin-bottom: 1em;
+}

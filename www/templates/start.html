@@ -1,0 +1,42 @@
+<ion-view view-title="labfriend">
+    <ion-nav-buttons side="right">
+      <button class="button button-clear" ng-click="gotoAdd()">
+         <span class="my-icon">+</span>
+      </button>
+    </ion-nav-buttons>
+    <ion-header-bar class="bar bar-subheader">
+        <div class="button-bar">
+          <a class="button" ng-class="{'button-balanced': inne}" ng-click="show(true)">Inne</a>
+          <a class="button" ng-class="{'button-assertive': ute}" ng-click="show(false)">På utlån</a>
+        </div>    
+    </ion-header-bar>
+    <ion-content class="padding-top"> 
+        <ion-list>
+            <div class="button-bar custom-bar">
+              <a class="button" ng-class="{'button-positive': activeOS == undefined}" ng-click="setActiveOS()">Alle</a>
+              <a class="button" ng-class="{'button-positive': activeOS == 'Android' }" ng-click="setActiveOS('android')">
+                  <i class="icon ion-social-android"></i>
+              </a>
+              <a class="button" ng-class="{'button-positive': activeOS == 'iOS' }" ng-click="setActiveOS('ios')"><i class="icon ion-social-apple"></i></a>
+              <a class="button" ng-class="{'button-positive': activeOS == 'Windows' }" ng-click="setActiveOS('windows')"><i class="icon ion-social-windows"></i></a>
+
+            </div> 
+            <ion-item ng-repeat="item in equipment | filter:activeFilter | orderBy:'make'" 
+                      item="item"
+                      href="#/item/{{item.$id}}" ng-show="activeOS === item.os || activeOS === undefined">
+                {{ item.make }} {{ item.model }}
+                <span class="align-rightz" ng-show="!item.available" ng-class="{'red': (dateDiff(today, item) > 6)}">{{ dateDiff(today, item) }}<strong>d</strong></span>
+                <div ng-show="!item.available">
+                    Utlånt til: <strong>{{ returnLoanee(item) }}</strong>
+                </div> 
+              <ion-option-button class="button-assertive" ng-click="remove(item)" ng-show="item.available">
+                Ta bort
+              </ion-option-button>
+                <ion-option-button class="button-assertive" ng-click="return(item)" ng-show="!item.available">
+                Returnere
+              </ion-option-button>
+            </ion-item>
+
+      </ion-list>
+    </ion-content>
+</ion-view>
